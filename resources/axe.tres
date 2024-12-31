@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://ddtuprc355pdi"]
+
+[ext_resource type="Script" path="res://resources/weapon.gd" id="1_pd2jp"]
+[ext_resource type="Texture2D" uid="uid://b1xo015csh5ll" path="res://assets/glitch/pieceRed_multi03.png" id="2_sa7h1"]
+
+[resource]
+script = ExtResource("1_pd2jp")
+damage = 12
+weapon_name = "axe"
+texture = ExtResource("2_sa7h1")
+file_names = Array[String]([])
+metadata/active = true
