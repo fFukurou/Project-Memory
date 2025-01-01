@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq83etsrpihs4"]
+
+[ext_resource type="Script" path="res://scenes/scorer/scorer.gd" id="1_3tvl8"]
+
+[node name="Scorer" type="Node"]
+script = ExtResource("1_3tvl8")
+
+[node name="RevealTimer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -25.037
+
+[connection signal="timeout" from="RevealTimer" to="." method="_on_reveal_timer_timeout"]

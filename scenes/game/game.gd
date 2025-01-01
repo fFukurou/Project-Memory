@@ -3,6 +3,10 @@ extends Control
 const MEMORY_TILE = preload("res://scenes/memory_tile/memory_tile.tscn")
 
 @onready var tc: GridContainer = $HB/MC/TC
+@onready var scorer: Scorer = $Scorer
+@onready var label_moves: Label = $HB/MC2/VB/HB/LabelMoves
+@onready var label_pairs: Label = $HB/MC2/VB/HB2/LabelPairs
+@onready var sound: AudioStreamPlayer = $Sound
 
 
 
@@ -14,7 +18,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	label_moves.text = scorer.get_moves_made_str()
+	label_pairs.text = scorer.get_pairs_made_str()
 
 
 func add_memory_tile(image: ItemImage, frame: Texture2D) -> void:
@@ -31,8 +36,12 @@ func on_level_selected(level_num: int) -> void:
 	
 	for im in ld.get_selected_level_images():
 		add_memory_tile(im, frame)
+		
+	scorer.clear_new_game(ld.get_target_pairs())
 
 func _on_exit_button_pressed() -> void:
 	for t in tc.get_children():
 		t.queue_free()
+		
+	SoundManager.play_button_click(sound)
 	SignalManager.on_game_exit_pressed.emit()

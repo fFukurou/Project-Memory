@@ -20,3 +20,7 @@ expand_mode = 1
 [node name="Main" parent="." instance=ExtResource("3_j3vnk")]
 
 [node name="Game" parent="." instance=ExtResource("4_cqjgq")]
+visible = false
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+volume_db = -19.259
